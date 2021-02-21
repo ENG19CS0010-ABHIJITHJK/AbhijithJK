@@ -29,4 +29,4 @@ int main()
   d= distance(x1,y1,x2,y2);
   printf("The distance between (%f,%f) and (%f,%f) is %f", x1, y1, x2, y2, d);
   return 0;
-
+}
