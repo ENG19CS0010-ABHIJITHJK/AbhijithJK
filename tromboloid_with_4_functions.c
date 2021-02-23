@@ -1,9 +1,14 @@
 //WAP to find the volume of a tromboloid using 4 functions.
 #include<stdio.h>
-float input()
+float input(char trait)
 {
   float inp;
-  printf("Enter the height, depth and breadth: ");
+  if (trait =='h')
+  printf("Enter the height:");
+  else if(trait =='d')
+  printf("Enter the depth:");
+  else 
+  printf("Enter the breath:");
   scanf("%f", &inp);
   return inp;
 }
@@ -20,11 +25,10 @@ void output(float h, float d, float b, float vol)
 int main()
 {
   float h,d,b,v;
-  h= input();
-  d= input();
-  b= input();
+  h= input('h');
+  d= input('d');
+  b= input('b');
   v= volume(h,d,b);
   output(h,d,b,v);
   return 0;
 }
-
