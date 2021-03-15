@@ -8,7 +8,7 @@ struct coordinates
 
 void inputf()
 {
-  printf("Enter the coordinates for point 1: ");
+	printf("Enter the coordinates for point 1: ");
 	scanf("%d%d",&c1.x, &c1.y);
 	printf("Enter the coordinates for point 2: ");
 	scanf("%d%d", &c2.x,&c2.y);
