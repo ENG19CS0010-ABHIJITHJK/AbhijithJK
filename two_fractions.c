@@ -1,57 +1,65 @@
 //WAP to find the sum of two fractions.
 #include<stdio.h>
+#include<math.h>
 
-typedef struct
+struct fractions
 {
-	int num,denom;
-}frac;
-frac input1()
+    int n,d;
+};
+ 
+typedef struct fractions fract;
+
+fract input()
 {
-	frac a;
-  printf(" Enter numerator of frac 1 : ");
-	scanf("%d",&a.num);
-	printf(" Enter denominator of frac 1 : ");
-	scanf("%d",&a.denom);
-	return a;
+    fract f;
+    printf("Enter the numerator : \n");
+    scanf("%d",&f.n);
+    printf("Enter the denominator : \n");
+    scanf("%d",&f.d);
+    return f;
+     
 }
-frac input2()
+
+int gcd(int a,int b)
 {
-	frac b;
-  printf(" Enter numerator of frac 2 : ");
-	scanf("%d",&b.num);
-	printf(" Enter denominator of frac 2 : ");
-	scanf("%d",&b.denom);
-	return b;
+    	while(a!=b)
+    	{
+        	if(a>b)
+            {
+            	a-=b;
+        	}
+       	 	else
+        	{
+            	b-=a;
+        	}
+        }
+        return a;
 }
-int gcd_calc(int a,int b)
+
+fract calc(fract f1,fract f2)
 {
-	int gcd;
-	for(int i=1;i<=a && i<=b;i++)
-	{
-		if(a%i==0 && b%i==0)
-			gcd=i;
-	}
-	return gcd;
-}
-frac add(frac a, frac b)
-{
-	frac sum;
-	sum.num=(a.num*b.denom)+(b.num*a.denom);
-	sum.denom=a.denom*b.denom;
-	int h=gcd_calc(sum.num,sum.denom);
-	sum.num=sum.num/h;
-	sum.denom=sum.denom/h;
+	fract sum;
+	sum.n =(f1.n*f2.d)+(f2.n*f1.d);
+	sum.d = f1.d*f2.d;
+	int g=gcd(sum.n,sum.d);
+	sum.n = sum.n/g;
+	sum.d = sum.d/g;
 	return sum;
+	
 }
-void print(frac a,frac b,frac f)
-{
-	printf("The sum fraction is %d/%d",f.num,f.denom);
+
+void output(fract f1,fract f2,fract sum)
+{	
+	printf("The sum of both the fractions %d/%d and %d/%d is %d/%d .\n",f1.n,f1.d,f2.n,f2.d,sum.n,sum.d);
 }
+
 int main()
-{
-  frac a,b,f;
- 	a=input1(a);
-	b=input2(b);
-	f=add(a,b);
-	print(a,b,f);
+{   
+	fract f1,f2,s;
+	int g;
+	f1=input();
+	f2=input();
+	s=calc(f1,f2);
+        output(f1,f2,s);
+	return 0;
 }
